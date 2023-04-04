@@ -1,11 +1,25 @@
 const solution = (n, words) => {
 	const usedWords = [];
-	let rotate = 0;
-	while (rotate++) {}
 
-	return rotate === n ? [0, 0] : [rotate / n, (rotate % n) + 1];
+	usedWords.push(words[0]);
+
+	for (let i = 1, limit = words.length; i < limit; i++) {
+		const prevWords = words[i - 1];
+		const currentWords = words[i];
+
+		if (prevWords[prevWords.length - 1] !== currentWords[0] || usedWords.includes(currentWords)) {
+			return [(i % n) + 1, Math.floor(i / n) + 1];
+		}
+
+		usedWords.push(currentWords);
+	}
+
+	if (words.length !== usedWords.length) {
+		return [words.length % n, Math.ceil(words.length / n)];
+	}
+
+	return [0, 0];
 };
-console.log(solution(3, ["tank", "kick", "know", "wheel", "land", "dream", "mother", "robot", "tank"]));
 
 // 문제 설명
 // 1부터 n까지 번호가 붙어있는 n명의 사람이 영어 끝말잇기를 하고 있습니다. 영어 끝말잇기는 다음과 같은 규칙으로 진행됩니다.
