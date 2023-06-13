@@ -27,7 +27,6 @@ const solution = (str) => {
 	const stack = [];
 	let idx = 0;
 
-	// baabaa
 	for (let i of str) {
 		stack.push(i);
 		if (stack[idx] === stack[idx - 1]) {
