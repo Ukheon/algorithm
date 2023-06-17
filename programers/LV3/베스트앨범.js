@@ -89,5 +89,4 @@ function solution(genres, plays) {
 		})
 		.map((t) => t.index);
 }
-
 console.log(solution(["classic", "pop", "classic", "classic", "bob", "bob"], [500, 600, 150, 800, 2500, 100]));
